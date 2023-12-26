@@ -1,0 +1,20 @@
+@import "tailwindcss/base";
+
+body {
+  background-color: #141820;
+}
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: Lexend;
+  src: url("fonts/Lexend-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: Orbitron;
+  src: url("fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: Sofia Pro;
+  src: url("fonts/sofiapro-light.otf") format("opentype");
+}
