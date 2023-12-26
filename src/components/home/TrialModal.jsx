@@ -114,27 +114,11 @@ const TrialModal = ({ setShow }) => {
                 name="contactname"
                 id="contactname"
                 autoComplete="contactname"
-                className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
                 placeholder="Contact name"
               />
             </div>
-            {/* Contact Name */}
-            <div className="space-y-2">
-              <label
-                htmlFor="contactname"
-                className="block font-secondary text-sm font-normal text-white"
-              >
-                Contact Name
-              </label>
-              <input
-                type="text"
-                name="contactname"
-                id="contactname"
-                autoComplete="contactname"
-                className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
-                placeholder="Contact name"
-              />
-            </div>
+
             {/* club name */}
             <div className="space-y-2">
               <label
@@ -148,7 +132,7 @@ const TrialModal = ({ setShow }) => {
                 name="clubname"
                 id="clubname"
                 autoComplete="clubname"
-                className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
                 placeholder="Club name"
               />
             </div>
@@ -165,7 +149,7 @@ const TrialModal = ({ setShow }) => {
                 name="email"
                 id="email"
                 autoComplete="email"
-                className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
                 placeholder="Email"
               />
             </div>
@@ -182,7 +166,7 @@ const TrialModal = ({ setShow }) => {
                 name="phone"
                 id="phone"
                 autoComplete="phone"
-                className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
                 placeholder="Phone"
               />
             </div>

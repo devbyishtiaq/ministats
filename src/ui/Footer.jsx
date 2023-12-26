@@ -17,8 +17,12 @@ const Footer = () => {
           </p>
           {/* social icons */}
           <div className="flex items-center space-x-6">
-            <TwitterIcon />
-            <LinkedinIcon />
+            <a href="https://twitter.com/Mini_Stats">
+              <TwitterIcon />
+            </a>
+            <a href="https://www.linkedin.com/company/ministats/">
+              <LinkedinIcon />
+            </a>
           </div>
         </div>
         {/* quick links */}

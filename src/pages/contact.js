@@ -46,7 +46,7 @@ const Contact = () => {
                     name="firstname"
                     id="firstname"
                     autoComplete="firstname"
-                    className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
+                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
                     placeholder="First name"
                   />
                 </div>
@@ -63,7 +63,7 @@ const Contact = () => {
                     name="lastname"
                     id="lastname"
                     autoComplete="lastname"
-                    className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
+                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
                     placeholder="Last name"
                   />
                 </div>
@@ -80,7 +80,7 @@ const Contact = () => {
                     name="email"
                     id="email"
                     autoComplete="email"
-                    className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
+                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
                     placeholder="Email"
                   />
                 </div>
@@ -97,7 +97,7 @@ const Contact = () => {
                     name="phone"
                     id="phone"
                     autoComplete="phone"
-                    className="block w-full py-2 px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
+                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
                     placeholder="Number"
                   />
                 </div>
