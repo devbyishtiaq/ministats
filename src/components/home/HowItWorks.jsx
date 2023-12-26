@@ -4,7 +4,8 @@ const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className={`bg-hiw bg-cover bg-center bg-no-repeat`}
+      className={`bg-hiw bg-cover bg-no-repeat`}
+      style={{ backgroundPosition: "30% 100%" }}
     >
       <div className="relative inset-0 bg-black/30 backdrop-blur-[3px] xl:py-20 py-10 xl:px-[60px] px-4 ">
         <div className="flex flex-col items-center">

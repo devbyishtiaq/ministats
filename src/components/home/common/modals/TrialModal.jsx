@@ -1,26 +1,34 @@
 import React, { useState } from "react";
-import { CrossIcon } from "../../icons";
+import { CrossIcon } from "../../../../icons";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useAppContext } from "../../../../context/AppContext";
 
-const TrialModal = ({ setShow }) => {
-  const [showNextStep, setShowNextStep] = useState(false);
-  const [showFinalStep, setShowFinalStep] = useState(false);
+const TrialModal = () => {
+  const { closeModal } = useAppContext();
   const [selectedOption, setSelectedOption] = useState("individual");
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.id);
   };
+  const goToNextStep = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const goToPreviousStep = () => {
+    setActiveStep(activeStep - 1);
+  };
 
   return (
-    <div className="absolute overflow-y-auto inset-0 bg-black/80 flex justify-center items-start z-20 md:px-0 px-4 pt-10">
-      {!showNextStep && (
-        <div className="bg-custom-black rounded-lg max-w-[700px] w-full">
+    <div className="fixed h-[100vh] overflow-y-auto inset-0 bg-black/80 flex justify-center items-start z-20 md:px-0 px-4 py-10">
+      {activeStep === 1 && (
+        <div className="bg-custom-black rounded-lg max-w-[500px] w-full">
           {/* title */}
           <div className="flex items-center px-6 justify-between py-4 border-b border-dark-grey">
             <h6 className="font-bold font-secondary text-base text-white">
               Start Free Trial
             </h6>
-            <button onClick={() => setShow(false)}>
+            <button onClick={() => closeModal(false)}>
               <CrossIcon className="min-w-6 min-h-6" />
             </button>
           </div>
@@ -76,11 +84,14 @@ const TrialModal = ({ setShow }) => {
             </div>
             {/* buttons */}
             <div className="flex justify-end gap-4">
-              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light">
+              <button
+                onClick={() => closeModal(false)}
+                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+              >
                 CANCEL
               </button>
               <button
-                onClick={() => setShowNextStep(true)}
+                onClick={goToNextStep}
                 className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary"
               >
                 CONTINUE
@@ -90,19 +101,14 @@ const TrialModal = ({ setShow }) => {
         </div>
       )}
       {/* second step */}
-      {showNextStep && !showFinalStep && (
-        <div className="bg-custom-black rounded-lg max-w-[700px]">
+      {activeStep === 2 && (
+        <div className="bg-custom-black rounded-lg max-w-[500px]">
           {/* title */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-dark-grey">
             <h6 className="font-bold font-secondary text-base text-white">
               Trial Access Request
             </h6>
-            <button
-              onClick={() => {
-                setShowFinalStep(false);
-                setShow(false);
-              }}
-            >
+            <button onClick={() => closeModal(false)}>
               <CrossIcon className="min-w-6 min-h-6" />
             </button>
           </div>
@@ -188,43 +194,22 @@ const TrialModal = ({ setShow }) => {
             />
             {/* buttons */}
             <div className="flex justify-end gap-4">
-              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light">
+              <button
+                onClick={() => closeModal(false)}
+                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+              >
                 CANCEL
               </button>
-              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light">
+              <button
+                onClick={goToPreviousStep}
+                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+              >
                 PREVIOUS
               </button>
-              <button
-                onClick={() => setShowFinalStep(true)}
-                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary"
-              >
+              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary">
                 SUBMIT
               </button>
             </div>
-          </div>
-        </div>
-      )}
-      {/* final step */}
-      {showFinalStep && (
-        <div className="bg-custom-black rounded-lg max-w-[700px]">
-          {/* title */}
-          <div className="flex items-center justify-between py-4 px-6 border-b border-dark-grey">
-            <h6 className="font-bold font-secondary text-base text-white">
-              Info
-            </h6>
-            <button onClick={() => setShow(false)}>
-              <CrossIcon className="min-w-6 min-h-6" />
-            </button>
-          </div>
-          {/* body */}
-          <div className="p-6">
-            <h6 className="font-medium text-base font-secondary text-white">
-              MiniStats Member
-            </h6>
-            <p className="text-sm font-light font-secondary text-white">
-              Your Academy must be a MiniStats member. Contact your
-              administrator to register players and unlock this feature.
-            </p>
           </div>
         </div>
       )}

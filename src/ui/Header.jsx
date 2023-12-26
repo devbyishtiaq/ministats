@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo, LogoSm, ToggleIcon } from "../icons";
+import InfoModal from "../components/home/common/modals/InfoModal";
+import { useAppContext } from "../context/AppContext";
 
-const Header = ({ className, header }) => {
+const Header = ({ className, header, openModal }) => {
+  const [open, setOpen] = useState(false);
   return (
     <header>
+      {/* modal */}
+      {open && <InfoModal setOpen={setOpen} />}
       {/* desktop */}
       <nav
         className={`flex justify-between items-center xl:px-[60px] px-4 py-6 ${className} ${
@@ -33,11 +38,17 @@ const Header = ({ className, header }) => {
         {/* login buttons */}
         <div className="lg:flex hidden items-center space-x-5">
           {/* as club */}
-          <button className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-white hover:bg-white rounded-[40px] text-white hover:text-black transition-all delay-100 text-sm font-light">
+          <button
+            onClick={() => openModal()}
+            className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-white hover:bg-white rounded-[40px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+          >
             LOGIN AS CLUB
           </button>
           {/* as player */}
-          <button className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary">
+          <button
+            onClick={() => setOpen(true)}
+            className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary"
+          >
             LOGIN AS PLAYER
           </button>
         </div>
