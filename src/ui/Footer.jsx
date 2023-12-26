@@ -28,13 +28,13 @@ const Footer = () => {
           </h4>
           <ul className="xl:space-y-3 space-y-2 text-grey xl:text-lg text-base font-light font-secondary xl:mt-5 mt-4">
             <li>
-              <Link>How its works</Link>
+              <Link to="/how-it-works">How it works</Link>
             </li>
             <li>
-              <Link>FAQs</Link>
+              <Link to="/faq">FAQs</Link>
             </li>
             <li>
-              <Link>Contact us</Link>
+              <Link to="/contact">Contact us</Link>
             </li>
           </ul>
         </div>
