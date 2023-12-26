@@ -21,6 +21,7 @@ const Home = () => {
     };
     scrollToElement();
   }, [id]);
+
   return (
     <React.Fragment>
       <MainLayout>

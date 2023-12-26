@@ -10,6 +10,7 @@ import ToggleIcon from "./ToggleIcon";
 import LogoSm from "./LogoSm";
 import QuestionIcon from "./QuestionIcon";
 import PlayIcon from "./PlayIcon";
+import CrossIcon from "./CrossIcon";
 
 export {
   Logo,
@@ -24,4 +25,5 @@ export {
   LogoSm,
   QuestionIcon,
   PlayIcon,
+  CrossIcon,
 };
