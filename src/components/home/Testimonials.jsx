@@ -8,17 +8,30 @@ import {
 
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === testimonials.length - 1 ? 0 : prevSlide + 1
-      );
-    }, 7000);
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === testimonials.length - 1 ? 0 : prevSlide + 1
+    );
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? testimonials.length - 1 : prevSlide - 1
+    );
+  };
+
+  const renderIndicators = () => {
+    return testimonials.map((_, index) => (
+      <span
+        key={index}
+        className={`w-3 h-3 rounded-full ${
+          index === currentSlide ? "bg-secondary" : "bg-white"
+        }`}
+        onClick={() => setCurrentSlide(index)}
+      />
+    ));
+  };
 
   return (
     <section id="testimonials">
@@ -37,8 +50,12 @@ const Testimonials = () => {
           </p>
         </div>
         {/* slider */}
+        <div className="flex items-center gap-3 justify-end text-white pr-2">
+          <button onClick={prevSlide}>Previous</button>
+          <button onClick={nextSlide}>Next</button>
+        </div>
         <div
-          className={`flex lg:flex-nowrap flex-wrap gap-4 md:gap-12 xl:mt-10 mt-6 transition-opacity duration-700`}
+          className={`flex lg:flex-nowrap flex-wrap gap-4 md:gap-12 xl:mt-8 mt-6 transition-opacity duration-700`}
         >
           <div className="border border-dark-grey py-6 px-6 rounded-lg flex flex-col xl:space-y-4 space-y-3">
             <img src={Stars} className="w-[152px]" alt="" />
@@ -62,6 +79,10 @@ const Testimonials = () => {
               }}
             />
           </div>
+        </div>
+        {/* indicators */}
+        <div className="flex items-center gap-4 justify-center mt-6">
+          {renderIndicators()}
         </div>
       </div>
     </section>
