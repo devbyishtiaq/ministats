@@ -5,8 +5,14 @@ import ReCAPTCHA from "react-google-recaptcha";
 const TrialModal = ({ setShow }) => {
   const [showNextStep, setShowNextStep] = useState(false);
   const [showFinalStep, setShowFinalStep] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("individual");
+
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.id);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-20">
+    <div className="absolute overflow-y-auto inset-0 bg-black/80 flex justify-center items-start z-20 md:px-0 px-4 pt-10">
       {!showNextStep && (
         <div className="bg-custom-black rounded-lg max-w-[700px] w-full">
           {/* title */}
@@ -26,6 +32,8 @@ const TrialModal = ({ setShow }) => {
                 name="individual"
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
+                checked={selectedOption === "individual"}
+                onChange={handleOptionChange}
               />
               <label
                 htmlFor="individual"
@@ -36,14 +44,15 @@ const TrialModal = ({ setShow }) => {
             </div>
             <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg">
               <input
-                id="individual"
+                id="schoolCollege"
                 name="individual"
                 type="radio"
-                checked
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
+                checked={selectedOption === "schoolCollege"}
+                onChange={handleOptionChange}
               />
               <label
-                htmlFor="individual"
+                htmlFor="schoolCollege"
                 className="text-sm font-secondary text-white"
               >
                 Schools/College Team
@@ -51,13 +60,15 @@ const TrialModal = ({ setShow }) => {
             </div>
             <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg">
               <input
-                id="individual"
+                id="academy"
                 name="individual"
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
+                checked={selectedOption === "academy"}
+                onChange={handleOptionChange}
               />
               <label
-                htmlFor="individual"
+                htmlFor="academy"
                 className="text-sm font-secondary text-white"
               >
                 Academy (multiple teams)

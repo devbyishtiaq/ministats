@@ -2,6 +2,7 @@
 
 body {
   background-color: #141820;
+  position: relative;
 }
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
