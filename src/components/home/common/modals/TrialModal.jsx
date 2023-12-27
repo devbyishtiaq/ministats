@@ -8,8 +8,8 @@ const TrialModal = () => {
   const [selectedOption, setSelectedOption] = useState("individual");
   const [activeStep, setActiveStep] = useState(1);
 
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.id);
+  const handleOptionChange = (item) => {
+    setSelectedOption(item);
   };
   const goToNextStep = () => {
     setActiveStep(activeStep + 1);
@@ -34,15 +34,19 @@ const TrialModal = () => {
           </div>
           {/* form */}
           <div className="flex flex-col space-y-6 !w-full mt-5 p-6">
-            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg">
+            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg relative">
               <input
                 id="individual"
                 name="individual"
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
                 checked={selectedOption === "individual"}
-                onChange={handleOptionChange}
               />
+              <div
+                onClick={() => handleOptionChange("individual")}
+                className="absolute inset-0 bg-transparent"
+              />
+
               <label
                 htmlFor="individual"
                 className="text-sm font-secondary text-white"
@@ -50,14 +54,17 @@ const TrialModal = () => {
                 Individual Team
               </label>
             </div>
-            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg">
+            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg relative">
               <input
                 id="schoolCollege"
                 name="individual"
                 type="radio"
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
                 checked={selectedOption === "schoolCollege"}
-                onChange={handleOptionChange}
+              />
+              <div
+                onClick={() => handleOptionChange("schoolCollege")}
+                className="absolute inset-0 bg-transparent"
               />
               <label
                 htmlFor="schoolCollege"
@@ -66,7 +73,7 @@ const TrialModal = () => {
                 Schools/College Team
               </label>
             </div>
-            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg">
+            <div className="p-4 flex items-center gap-4 border border-dark-grey rounded-lg relative">
               <input
                 id="academy"
                 name="individual"
@@ -74,6 +81,10 @@ const TrialModal = () => {
                 className="h-4 w-4 border-gray-300 text-secondary focus:secondary focus:ring-secondary"
                 checked={selectedOption === "academy"}
                 onChange={handleOptionChange}
+              />
+              <div
+                onClick={() => handleOptionChange("academy")}
+                className="absolute inset-0 bg-transparent"
               />
               <label
                 htmlFor="academy"
@@ -189,7 +200,7 @@ const TrialModal = () => {
             </div>
             {/* recaptcha */}
             <ReCAPTCHA
-              sitekey="YOUR_RECAPTCHA_SITE_KEY"
+              sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
               style={{ height: "66px" }}
             />
             {/* buttons */}

@@ -11,6 +11,8 @@ import LogoSm from "./LogoSm";
 import QuestionIcon from "./QuestionIcon";
 import PlayIcon from "./PlayIcon";
 import CrossIcon from "./CrossIcon";
+import ArrowLeft from "./ArrowLeft";
+import ArrowRight from "./ArrowRight";
 
 export {
   Logo,
@@ -26,4 +28,6 @@ export {
   QuestionIcon,
   PlayIcon,
   CrossIcon,
+  ArrowLeft,
+  ArrowRight,
 };

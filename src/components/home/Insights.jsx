@@ -20,7 +20,7 @@ const Insights = () => {
           </h2>
           <p className="xl:text-lg text-sm font-secondary font-light text-grey max-w-[648px]">
             We provide a user-friendly visual summary of a player’s performance
-            on their every move on the the field, facilitation a deeper
+            on their every move on the field, facilitating a deeper
             understanding of their game play.
           </p>
         </div>
@@ -71,9 +71,9 @@ const Insights = () => {
               alt=""
               className="h-[325px] md:h-[427px] xl:h-auto"
             />
-            <div className="flex flex-col p-4 md:p-5 rounded-2xl bg-custom-black absolute md:bottom-[48px] bottom-[25.5px] xl:-left-[210px] md:-left-[100px] xs:-left-[115px] -left-[50px] md:w-[377px] xs:w-[315px] w-72">
-              <Quote />
-              <p className="xl:text-sm text-xs leading-5 md:leading-6 font-light mt-3 font-secondary text-white">
+            <div className="flex flex-col p-2 xs:p-4 md:p-5 rounded-2xl bg-custom-black absolute md:bottom-[48px] xs:bottom-[25.5px] bottom-5 xl:-left-[210px] md:-left-[100px] xs:-left-[115px] -left-[50px] md:w-[377px] xs:w-[315px] w-72">
+              <Quote className="xs:w-auto w-5 xs:mr-auto" />
+              <p className="xl:text-sm text-xs leading-5 md:leading-6 font-light xs:mt-3 mt-1 font-secondary text-white">
                 If a parent feel their child should be in a better academy
                 system, let them use his/her data matched with their age skill
                 level to decide that.you can't have a 7yr old, with good skills

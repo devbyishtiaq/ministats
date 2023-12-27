@@ -11,7 +11,7 @@ const HowItWorks = () => {
         <div className="flex flex-col items-center">
           {/* section heading */}
           <div className="flex flex-col text-center xl:space-y-5 space-y-3">
-            <span className="xl:text-xl text-sm font-secondary font-normal text-secondary xl:leading-[30px] leading-6 uppercase">
+            <span className="xl:text-xl text-sm font-secondary font-normal text-white xl:leading-[30px] leading-6 uppercase">
               HOW ITS WORK
             </span>
             <h2 className="xl:text-5xl md:text-3xl text-2xl font-bold font-primary text-white xl:leading-[62.88px] leading-[31.44px] uppercase">

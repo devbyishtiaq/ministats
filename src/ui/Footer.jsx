@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { LinkedinIcon, Logo, TwitterIcon, LogoSm } from "../icons";
 
-const Footer = () => {
+const Footer = ({ setKey }) => {
   return (
-    <footer id="footer" className="xl:px-[60px] px-4 xl:pt-20 pt-10 pb-6 ">
+    <footer
+      id="footer"
+      className="max-w-[1440px] mx-auto xl:px-[60px] px-4 xl:pt-20 pt-10 pb-6 "
+    >
       <div className="flex lg:flex-nowrap flex-wrap items-center justify-between lg:gap-0 gap-8">
         {/* about us */}
         <div className="flex flex-col xl:space-y-[36px] space-y-4 max-w-[529px]">
@@ -32,7 +35,12 @@ const Footer = () => {
           </h4>
           <ul className="xl:space-y-3 space-y-2 text-grey xl:text-lg text-base font-light font-secondary xl:mt-5 mt-4">
             <li>
-              <Link to="/how-it-works">How it works</Link>
+              <Link
+                to="/how-it-works"
+                onClick={() => setKey((prev) => prev + 1)}
+              >
+                How it works
+              </Link>
             </li>
             <li>
               <Link to="/faq">FAQs</Link>
@@ -64,7 +72,7 @@ const Footer = () => {
       </div>
       <div className="bg-dark-grey h-[1px] my-6" />
       <p className="text-grey font-normal text-base text-center">
-        © 2023 Ministats. All Rights Reserved. Unauthorized use prohibited.
+        © 2023 MiniStats. All Rights Reserved. Unauthorized use prohibited.
       </p>
     </footer>
   );

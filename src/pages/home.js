@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import Testimonials from "../components/home/Testimonials";
 import Collborators from "../components/home/Collborators";
@@ -9,6 +9,8 @@ import Insights from "../components/home/Insights";
 import { useParams } from "react-router";
 
 const Home = () => {
+  const [key, setKey] = useState(0);
+
   let { id } = useParams();
   useEffect(() => {
     const scrollToElement = () => {
@@ -17,14 +19,16 @@ const Home = () => {
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: "smooth" });
         }
+      } else {
+        window.scrollTo(0, 0);
       }
     };
     scrollToElement();
-  }, [id]);
+  }, [id, key]);
 
   return (
     <React.Fragment>
-      <MainLayout>
+      <MainLayout setKey={setKey}>
         {/* hero */}
         <Hero />
         {/* what we do */}

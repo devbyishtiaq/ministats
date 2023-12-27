@@ -1,20 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Logo, LogoSm, ToggleIcon } from "../icons";
+import { CrossIcon, Logo, LogoSm, ToggleIcon } from "../icons";
 import InfoModal from "../components/home/common/modals/InfoModal";
-import { useAppContext } from "../context/AppContext";
 
-const Header = ({ className, header, openModal }) => {
+const Header = ({ className, header, openModal, setKey }) => {
   const [open, setOpen] = useState(false);
+  const [isNavbar, setIsNavbar] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 150) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleKey = () => {
+    setIsNavbar(false);
+    if (setKey) {
+      setKey((prev) => prev + 1);
+    }
+  };
+
   return (
-    <header>
+    <header className={isSticky ? "sticky bg-custom-black top-0 z-30" : ""}>
       {/* modal */}
       {open && <InfoModal setOpen={setOpen} />}
       {/* desktop */}
       <nav
-        className={`flex justify-between items-center xl:px-[60px] px-4 py-6 ${className} ${
+        className={`max-w-[1440px] mx-auto flex justify-between items-center xl:px-[60px] px-4 py-6 ${className} ${
           header === "custom" ? "bg-custom-black" : "bg-transparent"
-        }`}
+        } ${isSticky ? "sticky bg-custom-black top-0 z-30" : ""}`}
       >
         {/* logo */}
         <Link to="/" className="sm:block hidden">
@@ -26,9 +52,11 @@ const Header = ({ className, header, openModal }) => {
         {/* page links */}
         <ul className="lg:flex hidden items-center space-x-8">
           <li className="uppercase font-secondary text-white xl:text-base text-sm font-normal xl:leading-[26px]">
-            <Link to="/how-it-works">How It Works</Link>
+            <Link to="/how-it-works" onClick={() => setKey((prev) => prev + 1)}>
+              How It Works
+            </Link>
           </li>
-          <li className="uppercase font-secondary text-white xl:text-base text-sm font-normal xl:leading-[26px]">
+          <li className="font-secondary text-white xl:text-base text-sm font-normal xl:leading-[26px]">
             <Link to="/faq">FAQs</Link>
           </li>
           <li className="uppercase font-secondary text-white xl:text-base text-sm font-normal xl:leading-[26px]">
@@ -53,12 +81,42 @@ const Header = ({ className, header, openModal }) => {
           </button>
         </div>
         {/* toggle btn */}
-        <button className="lg:hidden block">
+        <button className="lg:hidden block" onClick={() => setIsNavbar(true)}>
           <ToggleIcon />
         </button>
       </nav>
       {/* mobile */}
-      {/* <nav className="p-4 fixed right-0 top-0 bottom-0 bg-secondary left-[0] z-[999]"></nav> */}
+      <nav
+        className={`py-8 px-4 fixed right-0 lg:hidden top-0 bottom-0 bg-custom-black transition-all delay-300 z-[999] ${
+          isNavbar ? "left-0" : "left-full"
+        }`}
+      >
+        <div className="flex items-center justify-between py-4">
+          <Link to="/" className="">
+            <LogoSm />
+          </Link>
+          {/* close btn */}
+          <button
+            className="lg:hidden block"
+            onClick={() => setIsNavbar(false)}
+          >
+            <CrossIcon />
+          </button>
+        </div>
+        <ul className="space-y-4 mt-6">
+          <li className="uppercase font-secondary py-2 px-3 text-base leading-[26px] text-white font-normal">
+            <Link to="/how-it-works" onClick={handleKey}>
+              How It Works
+            </Link>
+          </li>
+          <li className="font-secondary py-2 px-3 text-base leading-[26px] text-white font-normal">
+            <Link to="/faq">FAQs</Link>
+          </li>
+          <li className="uppercase font-secondary py-2 px-3 text-base leading-[26px] text-white font-normal">
+            <Link to="/contact">Contact Us</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

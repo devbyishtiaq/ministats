@@ -12,6 +12,8 @@ import TestimonialImage2 from "./testimonial2.png";
 import TestimonialImage3 from "./testimonial3.png";
 import PlayIcon from "./playicon.png";
 import ContactBg from "./contact.png";
+import Collaborator1Lg from "./collaborator1-lg.png";
+import Collaborator2Lg from "./collaborator2-lg.png";
 
 export {
   HeroImage,
@@ -28,4 +30,6 @@ export {
   Collaborator2,
   PlayIcon,
   ContactBg,
+  Collaborator1Lg,
+  Collaborator2Lg,
 };

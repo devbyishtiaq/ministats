@@ -10,7 +10,7 @@ function CrossIcon(props) {
       xmlns="http://www.w3.org/2000/svg"
       className={props.className}
     >
-      <g id="cross" clip-path="url(#clip0_1167_583)">
+      <g id="cross" clipPath="url(#clip0_1167_583)">
         <path
           id="Vector"
           d="M10 10L14 14M14 10L10 14"

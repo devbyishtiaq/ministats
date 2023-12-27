@@ -1,4 +1,9 @@
-import { Collaborator1, Collaborator2 } from "../../assets/images";
+import {
+  Collaborator1,
+  Collaborator2,
+  Collaborator1Lg,
+  Collaborator2Lg,
+} from "../../assets/images";
 
 const Collborators = () => {
   return (
@@ -6,7 +11,7 @@ const Collborators = () => {
       {/* desktop */}
       <div className="xl:p-20 px-4 py-10 md:flex hidden items-center justify-between">
         {/* collaborator image */}
-        <img src={Collaborator1} alt="" className="" />
+        <img src={Collaborator1Lg} alt="" className="" />
         {/* section heading */}
         <div className="space-y-5 max-w-[721px] text-center">
           <h2 className="xl:text-5xl md:text-3xl text-2xl font-bold font-primary text-white xl:leading-[62.88px] leading-[31.44px] uppercase">
@@ -18,7 +23,7 @@ const Collborators = () => {
           </p>
         </div>
         {/* collaborator image */}
-        <img src={Collaborator2} alt="" className="" />
+        <img src={Collaborator2Lg} alt="" className="" />
       </div>
       {/* mobile */}
       <div className="xl:p-20 px-4 py-10 md:hidden">
@@ -32,8 +37,8 @@ const Collborators = () => {
           </p>
         </div>
         <div className="flex items-center justify-center gap-10 mt-[40px]">
-          <img src={Collaborator1} alt="" className="w-[80px] h-[80px]" />
-          <img src={Collaborator2} alt="" className="w-[72.268px] h-[80px]" />
+          <img src={Collaborator1} alt="" className="w-[120.011px] h-[120px]" />
+          <img src={Collaborator2} alt="" className="w-[108.402px] h-[120px]" />
         </div>
       </div>
     </section>

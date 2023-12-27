@@ -5,6 +5,7 @@ import {
   TestimonialImage2,
   TestimonialImage3,
 } from "../../assets/images";
+import { ArrowLeft, ArrowRight } from "../../icons";
 
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,18 +20,6 @@ const Testimonials = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? testimonials.length - 1 : prevSlide - 1
     );
-  };
-
-  const renderIndicators = () => {
-    return testimonials.map((_, index) => (
-      <span
-        key={index}
-        className={`w-3 h-3 rounded-full ${
-          index === currentSlide ? "bg-secondary" : "bg-white"
-        }`}
-        onClick={() => setCurrentSlide(index)}
-      />
-    ));
   };
 
   return (
@@ -49,10 +38,20 @@ const Testimonials = () => {
             in their own words.
           </p>
         </div>
-        {/* slider */}
-        <div className="flex items-center gap-3 justify-end text-white pr-2">
-          <button onClick={prevSlide}>Previous</button>
-          <button onClick={nextSlide}>Next</button>
+        {/* slider buttons */}
+        <div className="lg:flex hidden items-center gap-3 justify-end text-white pr-2">
+          <button
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            onClick={prevSlide}
+          >
+            <ArrowLeft stroke="#222" />
+          </button>
+          <button
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            onClick={nextSlide}
+          >
+            <ArrowRight stroke="#222" />
+          </button>
         </div>
         <div
           className={`flex lg:flex-nowrap flex-wrap gap-4 md:gap-12 xl:mt-8 mt-6 transition-opacity duration-700`}
@@ -80,9 +79,20 @@ const Testimonials = () => {
             />
           </div>
         </div>
-        {/* indicators */}
-        <div className="flex items-center gap-4 justify-center mt-6">
-          {renderIndicators()}
+        {/* slider buttons */}
+        <div className="flex lg:hidden items-center justify-center mt-6 gap-3 text-white pr-2">
+          <button
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            onClick={prevSlide}
+          >
+            <ArrowLeft stroke="#222" />
+          </button>
+          <button
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            onClick={nextSlide}
+          >
+            <ArrowRight stroke="#222" />
+          </button>
         </div>
       </div>
     </section>

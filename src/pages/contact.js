@@ -1,8 +1,13 @@
 import MainLayout from "../layouts/MainLayout";
+import React, { useEffect } from "react";
 import { ContactBg } from "../assets/images";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <MainLayout header="custom">
       <section id="contact-us">
@@ -119,7 +124,7 @@ const Contact = () => {
                 </div>
                 {/* recaptcha */}
                 <ReCAPTCHA
-                  sitekey="YOUR_RECAPTCHA_SITE_KEY"
+                  sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
                   style={{ height: "66px" }}
                 />
                 {/* button */}
