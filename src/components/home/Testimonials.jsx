@@ -41,16 +41,18 @@ const Testimonials = () => {
         {/* slider buttons */}
         <div className="lg:flex hidden items-center gap-3 justify-end text-white pr-2">
           <button
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100 group"
             onClick={prevSlide}
           >
-            <ArrowLeft stroke="#222" />
+            <ArrowLeft stroke="#222" className="group-hover:hidden" />
+            <ArrowLeft className="group-hover:block hidden" />
           </button>
           <button
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100 group"
             onClick={nextSlide}
           >
-            <ArrowRight stroke="#222" />
+            <ArrowRight stroke="#222" className="group-hover:hidden" />
+            <ArrowRight className="group-hover:block hidden" />
           </button>
         </div>
         <div
@@ -82,16 +84,18 @@ const Testimonials = () => {
         {/* slider buttons */}
         <div className="flex lg:hidden items-center justify-center mt-6 gap-3 text-white pr-2">
           <button
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100 group"
             onClick={prevSlide}
           >
-            <ArrowLeft stroke="#222" />
+            <ArrowLeft stroke="#222" className="group-hover:hidden" />
+            <ArrowLeft className="group-hover:block hidden" />
           </button>
           <button
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100 group"
             onClick={nextSlide}
           >
-            <ArrowRight stroke="#222" />
+            <ArrowRight stroke="#222" className="group-hover:hidden" />
+            <ArrowRight className="group-hover:block hidden" />
           </button>
         </div>
       </div>

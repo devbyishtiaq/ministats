@@ -14,7 +14,7 @@ function ArrowRight(props) {
         <path
           id="Icon"
           d="M8 15L13 10L8 5"
-          stroke={props.stroke}
+          stroke={props.stroke || "#fff"}
           strokeWidth="1.66667"
           strokeLinecap="round"
           strokeLinejoin="round"

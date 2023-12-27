@@ -12,7 +12,7 @@ function ArrowLeft(props) {
     >
       <path
         d="M13 15L8 10L13 5"
-        stroke={props.stroke}
+        stroke={props.stroke || "#fff"}
         strokeWidth="1.66667"
         strokeLinecap="round"
         strokeLinejoin="round"
