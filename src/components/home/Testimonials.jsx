@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Stars,
   TestimonialImage1,
@@ -39,7 +39,7 @@ const Testimonials = () => {
           </p>
         </div>
         {/* slider buttons */}
-        <div className="lg:flex hidden items-center gap-3 justify-end text-white pr-2">
+        <div className="lg:flex hidden items-center gap-3 justify-center text-white pr-2">
           <button
             className="flex items-center justify-center h-10 w-10 rounded-full bg-white hover:bg-secondary transition-all duration-100 group"
             onClick={prevSlide}

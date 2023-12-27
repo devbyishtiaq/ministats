@@ -58,22 +58,22 @@ const faqs = [
   {
     id: 1,
     title: "What is MiniStats?",
-    text: "MiniStats is an advanced AI-powered platform designed to analyze and enhance individual player performance in soccer. It transforms game day recordings into personalized insights, supporting players, coaches/private trainers, and academies in their quest for improvement.",
+    text: "MiniStats is an advanced AI-powered platform designed to analyze and enhance individual player performance in soccer. It transforms game day recordings into personalized insights, supporting players, coaches, and academies in their quest for improvement.",
   },
   {
     id: 2,
     title: "How do I use MiniStats?",
-    text: "Using MiniStats is simple! Just record your game day with any device, upload the footage to MiniStats, and let our AI analyze your performance. Access your personalized report to inform your next training module.",
+    text: "Using MiniStats is simple! Just record your game day with any automated device with seamless recording function, upload the footage to MiniStats, and let our AI analyze your performance along with other team players. Access your personalized report with visual review to inform your next training module.",
   },
   {
     id: 3,
     title: "What kind of data does MiniStats analyze?",
-    text: "MiniStats analyzes a wide range of data, including movements, skills, and key moments from your game day. The AI combines this data with visually engaging replay moments to provide a comprehensive performance analysis.",
+    text: "MiniStats analyzes a wide range of data, including movements, skills, and abilities on the ball etc. The AI combines this data with visually engaging replay moments to provide a comprehensive performance analysis.",
   },
   {
     id: 4,
     title: "Is MiniStats suitable for players of all ages?",
-    text: "Absolutely! MiniStats customizes its analysis based on the player's age and skill set (ages 4 through 16). This ensures that insights and recommendations are tailored to the unique developmental needs of each player.",
+    text: "Absolutely! MiniStats customizes its analysis based on the player's age and skill set. This ensures that insights and recommendations are tailored to the unique developmental needs of each player.",
   },
   {
     id: 5,
@@ -83,11 +83,26 @@ const faqs = [
   {
     id: 6,
     title: "How often should I use MiniStats?",
-    text: "MiniStats can be used as frequently as desired. Regular use allows for ongoing performance tracking and targeted improvements. Whether you're part of an academy or an individual player, MiniStats adapts to your training rhythm",
+    text: "MiniStats can be used as frequently as desired. Regular use allows for ongoing performance tracking and targeted improvements. Whether you're part of an academy or an individual player, MiniStats adapts to your training rhythm.",
   },
   {
     id: 7,
     title: "Is MiniStats suitable for soccer academies and coaches?",
     text: "Absolutely! MiniStats is a valuable tool for academies and coaches, providing detailed insights into individual player performances. It supports the creation of personalized training sessions for collective improvement.",
+  },
+  {
+    id: 8,
+    title: "Can parents benefit from using MiniStats?",
+    text: "Yes, parents can gain valuable insights into their child's development with MiniStats. The platform offers a user-friendly visual summary, enabling parents to make informed decisions about their child's soccer journey.",
+  },
+  {
+    id: 9,
+    title: "Is MiniStats only for professional players?",
+    text: "No, MiniStats caters to players of all levels, from beginners to professionals. The platform is designed to support and enhance player development at every stage of the soccer journey.",
+  },
+  {
+    id: 10,
+    title: "How secure is the data uploaded to MiniStats?",
+    text: "Security is our priority. MiniStats employs robust measures to ensure the confidentiality and privacy of user data. Your information is securely stored and used only for the purpose of enhancing your soccer experience.",
   },
 ];
