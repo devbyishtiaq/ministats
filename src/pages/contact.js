@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import { Button, InputGroup } from "../ui";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -9,10 +9,21 @@ import { z } from "zod";
 import { toast } from "react-toastify";
 
 const Contact = () => {
+  const [isVerified, setIsVerified] = useState(false);
   // this will ensure that the user is always on the top of the page while navigating
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // handle ReCAPTCHA verification
+  const onReCAPTCHAChange = (value) => {
+    console.log(value, "value goes here");
+    if (value) {
+      setIsVerified(true);
+    } else {
+      setIsVerified(false);
+    }
+  };
 
   // valiation schema for contact form
   const schema = z.object({
@@ -37,6 +48,10 @@ const Contact = () => {
 
   // handle form submission
   const onSubmit = async (data) => {
+    if (!isVerified) {
+      toast.error("Please verify ReCAPTCHA!");
+      return;
+    }
     try {
       const response = await fetch("https://formspree.io/xjvnvbwd", {
         method: "POST",
@@ -151,6 +166,7 @@ const Contact = () => {
                 <ReCAPTCHA
                   sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
                   style={{ height: "66px" }}
+                  onChange={onReCAPTCHAChange}
                 />
                 {/* button */}
                 <div className="col-span-12">
