@@ -116,6 +116,23 @@ const Header = ({ className, header, openModal, setKey }) => {
             <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
+        {/* login buttons */}
+        <div className="flex items-center space-x-3 mt-6">
+          {/* as club */}
+          <button
+            onClick={() => openModal()}
+            className="py-2 font-custom px-3 border border-white hover:bg-white rounded-[40px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+          >
+            LOGIN AS CLUB
+          </button>
+          {/* as player */}
+          <button
+            onClick={() => setOpen(true)}
+            className="py-2 font-custom px-3 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary"
+          >
+            LOGIN AS PLAYER
+          </button>
+        </div>
       </nav>
     </header>
   );
