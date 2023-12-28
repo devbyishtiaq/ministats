@@ -32,14 +32,10 @@ const Faq = () => {
                   {/* info */}
                   <div className="space-y-1">
                     <h2 className="font-semibold text-base font-secondary text-white">
-                      What is MiniStats?
+                      {item.title}
                     </h2>
                     <p className="text-sm font-light font-secondary text-grey">
-                      MiniStats is an advanced AI-powered platform designed to
-                      analyze and enhance individual player performance in
-                      soccer. It transforms game day recordings into
-                      personalized insights, supporting players, coaches/private
-                      trainers, and academies in their quest for improvement.
+                      {item.text}
                     </p>
                   </div>
                 </div>

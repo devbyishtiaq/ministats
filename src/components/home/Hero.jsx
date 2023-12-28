@@ -1,6 +1,7 @@
 import React from "react";
 import { HeroImage, Circle } from "../../assets/images";
 import { useAppContext } from "../../context/AppContext";
+import { Button } from "../../ui";
 
 const Hero = () => {
   const { openModal } = useAppContext();
@@ -22,12 +23,13 @@ const Hero = () => {
           </p>
           {/* start trial button */}
           <div>
-            <button
+            <Button
               onClick={() => openModal()}
-              className="xl:py-4 py-[10px] font-secondary transition-all delay-100 xl:px-7 px-4 xl:mt-9 mt-6 rounded-[49px] text-white text-sm font-light bg-secondary hover:bg-primary"
+              rounded="xl"
+              className="xl:mt-9 mt-6"
             >
               START FREE TRIAL
-            </button>
+            </Button>
           </div>
         </div>
         {/* hero image */}

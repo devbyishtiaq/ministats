@@ -1,7 +1,8 @@
-import MainLayout from "../layouts/MainLayout";
 import React, { useEffect } from "react";
-import { ContactBg } from "../assets/images";
+import MainLayout from "../layouts/MainLayout";
+import { Button, InputGroup } from "../ui";
 import ReCAPTCHA from "react-google-recaptcha";
+import { ContactBg } from "../assets/images";
 
 const Contact = () => {
   useEffect(() => {
@@ -39,73 +40,35 @@ const Contact = () => {
             <form action="" className="mt-8">
               <div className="grid grid-cols-12 gap-6">
                 {/* first name */}
-                <div className="space-y-2 lg:col-span-6 col-span-12">
-                  <label
-                    htmlFor="firstname"
-                    className="block font-secondary text-sm font-normal text-white"
-                  >
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    name="firstname"
-                    id="firstname"
-                    autoComplete="firstname"
-                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
-                    placeholder="First name"
-                  />
-                </div>
+                <InputGroup
+                  htmlfor="firstname"
+                  labelText="First Name"
+                  inputName="firstname"
+                  placeholder="First name"
+                />
                 {/* last name */}
-                <div className="space-y-2 lg:col-span-6 col-span-12">
-                  <label
-                    htmlFor="lastname"
-                    className="block font-secondary text-sm font-normal text-white"
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    name="lastname"
-                    id="lastname"
-                    autoComplete="lastname"
-                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
-                    placeholder="Last name"
-                  />
-                </div>
+                <InputGroup
+                  htmlfor="lastname"
+                  labelText="Last Name"
+                  inputName="lastname"
+                  placeholder="Last name"
+                />
                 {/* email */}
-                <div className="space-y-2 lg:col-span-6 col-span-12">
-                  <label
-                    htmlFor="email"
-                    className="block font-secondary text-sm font-normal text-white"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    autoComplete="email"
-                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
-                    placeholder="Email"
-                  />
-                </div>
+                <InputGroup
+                  htmlfor="email"
+                  labelText="Email"
+                  inputName="email"
+                  placeholder="Email"
+                  inputType="email"
+                />
                 {/* phone */}
-                <div className="space-y-2 lg:col-span-6 col-span-12">
-                  <label
-                    htmlFor="phone"
-                    className="block font-secondary text-sm font-normal text-white"
-                  >
-                    Phone number
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    autoComplete="phone"
-                    className="block w-full py-2 text-white px-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-sm"
-                    placeholder="Number"
-                  />
-                </div>
+                <InputGroup
+                  htmlfor="phone"
+                  labelText="Phone"
+                  inputName="phone"
+                  placeholder="Phone"
+                  inputType="phone"
+                />
                 {/* message */}
                 <div className="space-y-2 col-span-12">
                   <label
@@ -129,9 +92,7 @@ const Contact = () => {
                 />
                 {/* button */}
                 <div className="col-span-12">
-                  <button className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary">
-                    SEND MESSAGE
-                  </button>
+                  <Button>SEND MESSAGE</Button>
                 </div>
               </div>
             </form>

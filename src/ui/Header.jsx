@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CrossIcon, Logo, LogoSm, ToggleIcon } from "../icons";
 import InfoModal from "../components/home/common/modals/InfoModal";
+import Button from "./Button";
 
 const Header = ({ className, header, openModal, setKey }) => {
   const [open, setOpen] = useState(false);
@@ -66,19 +67,11 @@ const Header = ({ className, header, openModal, setKey }) => {
         {/* login buttons */}
         <div className="lg:flex hidden items-center space-x-5">
           {/* as club */}
-          <button
-            onClick={() => openModal()}
-            className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-white hover:bg-white rounded-[40px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-          >
+          <Button onClick={() => openModal()} bg="transparent">
             LOGIN AS CLUB
-          </button>
+          </Button>
           {/* as player */}
-          <button
-            onClick={() => setOpen(true)}
-            className="xl:py-3 py-2 font-custom xl:px-5 px-4 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary"
-          >
-            LOGIN AS PLAYER
-          </button>
+          <Button onClick={() => setOpen(true)}>LOGIN AS PLAYER</Button>
         </div>
         {/* toggle btn */}
         <button className="lg:hidden block" onClick={() => setIsNavbar(true)}>
@@ -96,12 +89,14 @@ const Header = ({ className, header, openModal, setKey }) => {
             <LogoSm />
           </Link>
           {/* close btn */}
-          <button
-            className="lg:hidden block"
+          <Button
             onClick={() => setIsNavbar(false)}
+            bg="transparent"
+            className="lg:hidden block border-none hover:bg-transparent"
+            padding=""
           >
             <CrossIcon />
-          </button>
+          </Button>
         </div>
         <ul className="space-y-4 mt-6">
           <li className="uppercase font-secondary py-2 px-3 text-base leading-[26px] text-white font-normal">
@@ -117,21 +112,15 @@ const Header = ({ className, header, openModal, setKey }) => {
           </li>
         </ul>
         {/* login buttons */}
-        <div className="flex items-center space-x-3 mt-6">
+        <div className="flex items-center space-x-2 xs:space-x-5 mt-6">
           {/* as club */}
-          <button
-            onClick={() => openModal()}
-            className="py-2 font-custom px-3 border border-white hover:bg-white rounded-[40px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-          >
+          <Button onClick={() => openModal()} bg="transparent" padding="sm">
             LOGIN AS CLUB
-          </button>
+          </Button>
           {/* as player */}
-          <button
-            onClick={() => setOpen(true)}
-            className="py-2 font-custom px-3 border border-secondary hover:border-primary rounded-[40px] text-white text-sm transition-all delay-100 font-light bg-secondary hover:bg-primary"
-          >
+          <Button onClick={() => setOpen(true)} padding="sm">
             LOGIN AS PLAYER
-          </button>
+          </Button>
         </div>
       </nav>
     </header>
