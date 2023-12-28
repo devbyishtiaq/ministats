@@ -3,11 +3,60 @@ import MainLayout from "../layouts/MainLayout";
 import { Button, InputGroup } from "../ui";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ContactBg } from "../assets/images";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+  // this will ensure that the user is always on the top of the page while navigating
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // valiation schema for contact form
+  const schema = z.object({
+    firstname: z.string().min(1, "First name is required"),
+    lastname: z.string().min(1, "Last name is required"),
+    email: z.string().min(1, "Email is required").email("Invalid email"),
+    phone: z
+      .string()
+      .min(1, "Phone number is required")
+      .regex(/^\d+$/, "Phone number must be a number"),
+    message: z.string().min(1, "Message is required"),
+  });
+
+  // destructure required functions from useform
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  // handle form submission
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("https://formspree.io/xjvnvbwd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        console.log("Message sent successfully!");
+      } else {
+        toast.error("Failed to send message!");
+        console.error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error occurred", error);
+    }
+  };
 
   return (
     <MainLayout header="custom">
@@ -37,7 +86,7 @@ const Contact = () => {
               <br /> We typically respond to all inquiries within 24 hours!
             </p>
             {/* form */}
-            <form action="" className="mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
               <div className="grid grid-cols-12 gap-6">
                 {/* first name */}
                 <InputGroup
@@ -45,6 +94,8 @@ const Contact = () => {
                   labelText="First Name"
                   inputName="firstname"
                   placeholder="First name"
+                  register={register}
+                  errors={errors}
                 />
                 {/* last name */}
                 <InputGroup
@@ -52,6 +103,8 @@ const Contact = () => {
                   labelText="Last Name"
                   inputName="lastname"
                   placeholder="Last name"
+                  register={register}
+                  errors={errors}
                 />
                 {/* email */}
                 <InputGroup
@@ -60,6 +113,8 @@ const Contact = () => {
                   inputName="email"
                   placeholder="Email"
                   inputType="email"
+                  register={register}
+                  errors={errors}
                 />
                 {/* phone */}
                 <InputGroup
@@ -68,6 +123,8 @@ const Contact = () => {
                   inputName="phone"
                   placeholder="Phone"
                   inputType="phone"
+                  register={register}
+                  errors={errors}
                 />
                 {/* message */}
                 <div className="space-y-2 col-span-12">
@@ -82,8 +139,13 @@ const Contact = () => {
                     name="message"
                     rows={6}
                     className="block w-full p-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-grey text-sm"
-                    defaultValue={""}
+                    {...register("message")}
                   />
+                  {errors["message"] && (
+                    <p className="text-red-500 text-sm">
+                      {errors["message"].message}
+                    </p>
+                  )}
                 </div>
                 {/* recaptcha */}
                 <ReCAPTCHA

@@ -5,6 +5,7 @@ const InputField = ({
   value,
   onChange,
   name = "",
+  register,
 }) => {
   return (
     <input
@@ -15,6 +16,7 @@ const InputField = ({
       value={value}
       onChange={onChange}
       autoComplete={name}
+      {...register(name)}
     />
   );
 };

@@ -14,12 +14,14 @@ const Home = () => {
   let { id } = useParams();
   useEffect(() => {
     const scrollToElement = () => {
+      // scroll to how it works section
       if (id) {
         const targetElement = document.getElementById(`${id}`);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: "smooth" });
         }
       } else {
+        // this will ensure that the user is always on the top of the page while navigating
         window.scrollTo(0, 0);
       }
     };

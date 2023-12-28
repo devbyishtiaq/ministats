@@ -3,6 +3,8 @@ import MainLayout from "../layouts/MainLayout";
 import { QuestionIcon } from "../icons";
 
 const Faq = () => {
+  // this will ensure that the user is always on the top of the page while navigating
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
