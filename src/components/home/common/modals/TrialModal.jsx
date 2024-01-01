@@ -190,79 +190,77 @@ const TrialModal = () => {
             </Button>
           </div>
           {/* form */}
-          <div className="p-6 space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
             <p className="font-secondary text-sm text-white font-normal">
               Complete the form below to receive a unique link for the free
               trial version, and we'll get in touch!
             </p>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Contact Name */}
-              <InputGroup
-                htmlfor="contactname"
-                labelText="Contact Name"
-                inputName="contactname"
-                placeholder="Contact name"
-                inputType="text"
-                register={register}
-                errors={errors}
-              />
+            {/* Contact Name */}
+            <InputGroup
+              htmlfor="contactname"
+              labelText="Contact Name"
+              inputName="contactname"
+              placeholder="Contact name"
+              inputType="text"
+              register={register}
+              errors={errors}
+            />
 
-              {/* club name */}
-              <InputGroup
-                htmlfor="clubname"
-                labelText="Club Name"
-                inputName="clubname"
-                placeholder="Club name"
-                inputType="text"
-                register={register}
-                errors={errors}
-              />
-              {/* email */}
-              <InputGroup
-                htmlfor="email"
-                labelText="Email"
-                inputName="email"
-                placeholder="Email"
-                inputType="email"
-                register={register}
-                errors={errors}
-              />
-              {/* email */}
-              <InputGroup
-                htmlfor="phone"
-                labelText="Phone"
-                inputName="phone"
-                placeholder="Phone"
-                inputType="text"
-                register={register}
-                errors={errors}
-              />
-              {/* recaptcha */}
-              <ReCAPTCHA
-                sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
-                style={{ height: "66px" }}
-                onChange={onReCAPTCHAChange}
-              />
-              {/* buttons */}
-              <div className="flex justify-end gap-4">
-                <button
-                  onClick={() => closeModal(false)}
-                  className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-                >
-                  CANCEL
-                </button>
-                <button
-                  onClick={goToPreviousStep}
-                  className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-                >
-                  PREVIOUS
-                </button>
-                <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary">
-                  SUBMIT
-                </button>
-              </div>
-            </form>
-          </div>
+            {/* club name */}
+            <InputGroup
+              htmlfor="clubname"
+              labelText="Club Name"
+              inputName="clubname"
+              placeholder="Club name"
+              inputType="text"
+              register={register}
+              errors={errors}
+            />
+            {/* email */}
+            <InputGroup
+              htmlfor="email"
+              labelText="Email"
+              inputName="email"
+              placeholder="Email"
+              inputType="email"
+              register={register}
+              errors={errors}
+            />
+            {/* email */}
+            <InputGroup
+              htmlfor="phone"
+              labelText="Phone"
+              inputName="phone"
+              placeholder="Phone"
+              inputType="text"
+              register={register}
+              errors={errors}
+            />
+            {/* recaptcha */}
+            <ReCAPTCHA
+              sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
+              style={{ height: "66px" }}
+              onChange={onReCAPTCHAChange}
+            />
+            {/* buttons */}
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={() => closeModal(false)}
+                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+              >
+                CANCEL
+              </button>
+              <button
+                onClick={goToPreviousStep}
+                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+              >
+                PREVIOUS
+              </button>
+              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary">
+                SUBMIT
+              </button>
+            </div>
+          </form>
         </div>
       )}
     </div>
