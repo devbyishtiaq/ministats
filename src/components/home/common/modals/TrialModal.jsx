@@ -1,13 +1,70 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { CrossIcon } from "../../../../icons";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useAppContext } from "../../../../context/AppContext";
-import { Button } from "../../../../ui";
+import { Button, InputGroup } from "../../../../ui";
+import { toast } from "react-toastify";
+import { sendContactForm } from "../../../../api/sendContactForm";
 
 const TrialModal = () => {
   const { closeModal } = useAppContext();
   const [selectedOption, setSelectedOption] = useState("individual");
   const [activeStep, setActiveStep] = useState(1);
+  const [isVerified, setIsVerified] = useState(false);
+
+  // handle ReCAPTCHA verification
+  const onReCAPTCHAChange = (value) => {
+    console.log(value, "value goes here");
+    if (value) {
+      setIsVerified(true);
+    } else {
+      setIsVerified(false);
+    }
+  };
+
+  // valiation schema for contact form
+  const schema = z.object({
+    contactname: z.string().min(1, "Contact name is required"),
+    clubname: z.string().min(1, "Club name is required"),
+    email: z.string().min(1, "Email is required").email("Invalid email"),
+    phone: z
+      .string()
+      .min(1, "Phone number is required")
+      .regex(/^\d+$/, "Phone number must be a number"),
+  });
+
+  // destructure required functions from useform
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  // handle form submission
+  const onSubmit = async (data) => {
+    try {
+      const formData = { ...data, selectedOption };
+      const result = await sendContactForm(formData, isVerified);
+
+      if (result.success) {
+        toast.success(result.message);
+        reset();
+        console.log(result.message);
+      } else {
+        toast.error(result.message);
+        console.error(result.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
+  };
 
   const handleOptionChange = (item) => {
     setSelectedOption(item);
@@ -138,98 +195,73 @@ const TrialModal = () => {
               Complete the form below to receive a unique link for the free
               trial version, and we'll get in touch!
             </p>
-            {/* Contact Name */}
-            <div className="space-y-2">
-              <label
-                htmlFor="contactname"
-                className="block font-secondary text-sm font-normal text-white"
-              >
-                Contact name
-              </label>
-              <input
-                type="text"
-                name="contactname"
-                id="contactname"
-                autoComplete="contactname"
-                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {/* Contact Name */}
+              <InputGroup
+                htmlfor="contactname"
+                labelText="Contact Name"
+                inputName="contactname"
                 placeholder="Contact name"
+                inputType="text"
+                register={register}
+                errors={errors}
               />
-            </div>
 
-            {/* club name */}
-            <div className="space-y-2">
-              <label
-                htmlFor="clubname"
-                className="block font-secondary text-sm font-normal text-white"
-              >
-                Club Name
-              </label>
-              <input
-                type="text"
-                name="clubname"
-                id="clubname"
-                autoComplete="clubname"
-                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+              {/* club name */}
+              <InputGroup
+                htmlfor="clubname"
+                labelText="Club Name"
+                inputName="clubname"
                 placeholder="Club name"
+                inputType="text"
+                register={register}
+                errors={errors}
               />
-            </div>
-            {/* email */}
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="block font-secondary text-sm font-normal text-white"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+              {/* email */}
+              <InputGroup
+                htmlfor="email"
+                labelText="Email"
+                inputName="email"
                 placeholder="Email"
+                inputType="email"
+                register={register}
+                errors={errors}
               />
-            </div>
-            {/* email */}
-            <div className="space-y-2">
-              <label
-                htmlFor="phone"
-                className="block font-secondary text-sm font-normal text-white"
-              >
-                Phone number
-              </label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                autoComplete="phone"
-                className="block w-full py-2 px-3 text-white ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-transparent placeholder:text-grey text-sm"
+              {/* email */}
+              <InputGroup
+                htmlfor="phone"
+                labelText="Phone"
+                inputName="phone"
                 placeholder="Phone"
+                inputType="text"
+                register={register}
+                errors={errors}
               />
-            </div>
-            {/* recaptcha */}
-            <ReCAPTCHA
-              sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
-              style={{ height: "66px" }}
-            />
-            {/* buttons */}
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={() => closeModal(false)}
-                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-              >
-                CANCEL
-              </button>
-              <button
-                onClick={goToPreviousStep}
-                className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
-              >
-                PREVIOUS
-              </button>
-              <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary">
-                SUBMIT
-              </button>
-            </div>
+              {/* recaptcha */}
+              <ReCAPTCHA
+                sitekey="6Les-jcpAAAAABfRKG3-mqdD60aSOv3HKWPbDnzN"
+                style={{ height: "66px" }}
+                onChange={onReCAPTCHAChange}
+              />
+              {/* buttons */}
+              <div className="flex justify-end gap-4">
+                <button
+                  onClick={() => closeModal(false)}
+                  className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+                >
+                  CANCEL
+                </button>
+                <button
+                  onClick={goToPreviousStep}
+                  className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:bg-secondary rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light"
+                >
+                  PREVIOUS
+                </button>
+                <button className="xl:py-[10px] py-2 font-custom xl:px-4 px-4 border border-secondary hover:border-white hover:bg-white rounded-[49px] text-white hover:text-black transition-all delay-100 text-sm font-light bg-secondary">
+                  SUBMIT
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

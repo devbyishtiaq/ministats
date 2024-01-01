@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-toastify";
+import { sendContactForm } from "../api/sendContactForm";
 
 const Contact = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -41,6 +42,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
@@ -48,28 +50,20 @@ const Contact = () => {
 
   // handle form submission
   const onSubmit = async (data) => {
-    if (!isVerified) {
-      toast.error("Please verify ReCAPTCHA!");
-      return;
-    }
     try {
-      const response = await fetch("https://formspree.io/xjvnvbwd", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const result = await sendContactForm(data, isVerified);
 
-      if (response.ok) {
-        toast.success("Message sent successfully!");
-        console.log("Message sent successfully!");
+      if (result.success) {
+        toast.success(result.message);
+        reset();
+        console.log(result.message);
       } else {
-        toast.error("Failed to send message!");
-        console.error("Failed to send message");
+        toast.error(result.message);
+        console.error(result.message);
       }
     } catch (error) {
-      console.error("Error occurred", error);
+      toast.error(error.message);
+      console.error(error.message);
     }
   };
 
@@ -137,7 +131,7 @@ const Contact = () => {
                   labelText="Phone"
                   inputName="phone"
                   placeholder="Phone"
-                  inputType="phone"
+                  inputType="text"
                   register={register}
                   errors={errors}
                 />
@@ -153,6 +147,7 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows={6}
+                    placeholder="Type your messsage"
                     className="block w-full p-3 ring-0 focus:ring-0 focus:border-dark-grey rounded-lg border border-dark-grey !bg-custom-black placeholder:text-grey text-grey text-sm"
                     {...register("message")}
                   />
